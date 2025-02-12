@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jual Produk Organik per Kg</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #4CAF50, #8BC34A); /* Gradien Hijau */
+            color: white;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Sedikit transparan */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: black;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        input[type="number"] {
+            width: 100px;
+            padding: 5px;
+        }
+
+        .total {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+        .contact a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Jual Produk Organik per Kg</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Harga per Kg (Rp)</th>
+                    <th>Jumlah (Kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pupuk Organik</td>
+                    <td>Rp 10.000</td>
+                    <td><input type="number" id="pupuk" value="0" min="0" onchange="hitungTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Kompos</td>
+                    <td>Rp 15.000</td>
+                    <td><input type="number" id="kompos" value="0" min="0" onchange="hitungTotal()"></td>
+                </tr>
+                <tr>
+                    <td>Biogas</td>
+                    <td>Rp 20.000</td>
+                    <td><input type="number" id="biogas" value="0" min="0" onchange="hitungTotal()"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p class="total" id="totalHarga">Total Harga: Rp 0</p>
+
+        <!-- Tombol yang langsung membuka WhatsApp dengan pesan otomatis -->
+        <a id="waLink" class="btn" href="#" target="_blank">Beli Sekarang</a>
+
+        <div class="contact">
+            <p>Hubungi kami: <a href="tel:+6282287680647">082287680647</a></p>
+        </div>
+    </div>
+
+    <script>
+        function hitungTotal() {
+            const pupukHarga = 10000;
+            const komposHarga = 15000;
+            const biogasHarga = 20000;
+
+            const pupukJumlah = document.getElementById('pupuk').value;
+            const komposJumlah = document.getElementById('kompos').value;
+            const biogasJumlah = document.getElementById('biogas').value;
+
+            const total = (pupukHarga * pupukJumlah) + (komposHarga * komposJumlah) + (biogasHarga * biogasJumlah);
+
+            document.getElementById('totalHarga').innerText = 'Total Harga: Rp ' + total.toLocaleString();
+
+            const waLink = `https://wa.me/6282289768007?text=Saya%20ingin%20membeli%20produk%20dengan%20rincian:%0A- Pupuk Organik: ${pupukJumlah} Kg%0A- Kompos: ${komposJumlah} Kg%0A- Biogas: ${biogasJumlah} Kg%0ATotal: Rp ${total.toLocaleString()}`;
+            document.getElementById('waLink').href = waLink;
+        }
+    </script>
+
+</body>
+
+</html>
